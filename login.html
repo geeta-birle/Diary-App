@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <title>Login | YOUR DIARY </title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
+
+<body id="index">
+    <main class="auth-container">
+
+        ```
+        <div class="left-panel">
+            <img src="log.jpeg" alt="login illustration">
+        </div>
+
+        <div class="right-panel">
+            <h2>Welcome to your personal space..</h2>
+            <p class="subtitle">Please login to your account</p>
+
+            <form novalidate id="loginForm">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" name="email" placeholder="example@gmail.com" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email address" aria-required="true">
+
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" placeholder="Enter your password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$" title="Password must contain letters, numbers & special characters" aria-required="true">
+
+                <button type="submit" id="loginbutton">Login</button>
+            </form>
+
+            <p>Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+        ```
+
+    </main>
+
+
+
 </body>
+
 </html>

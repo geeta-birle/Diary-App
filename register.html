@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register | YOUR DIARY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="register">
+    <main class="auth-container">
+
+        <h2>Register</h2>
+
+        <form id="registerForm" novalidate>
+
+            <input id="name" type="text" placeholder="Name" required>
+            <br><br>
+
+            <input id="email" type="email" placeholder="Email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email address">
+            <br><br>
+
+            <input id="password" type="password" placeholder="Password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$" title="Password must contain letters, numbers & special characters">
+            <br><br>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </main>
+</body>
+
+</html>
