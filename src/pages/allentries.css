@@ -1,0 +1,25 @@
+.all-entries { max-width: 800px; }
+.ae-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.ae-header h2 { font-size: 24px; font-weight: 700; }
+.filters-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.filter-select { padding: 7px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; }
+.mood-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.mood-filter-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; cursor: pointer; font-size: 14px; color: var(--text2); transition: all 0.15s; }
+.mood-filter-btn:hover, .mood-filter-btn.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+.ae-count { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
+.ae-list { display: flex; flex-direction: column; gap: 10px; }
+.ae-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; box-shadow: var(--shadow); transition: transform 0.15s; }
+.ae-row:hover { transform: translateX(3px); }
+.ae-left { display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 0; }
+.ae-mood { font-size: 24px; flex-shrink: 0; }
+.ae-left h3 { font-size: 16px; font-weight: 600; color: var(--text); cursor: pointer; margin-bottom: 4px; }
+.ae-left h3:hover { color: var(--primary); }
+.ae-meta { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+.ae-actions { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+.ae-actions button { padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 13px; white-space: nowrap; }
+.ae-actions button:hover { background: var(--border); }
+.ae-actions button.danger { color: var(--danger); border-color: var(--danger); background: #fff0f0; }
+.dark .ae-actions button.danger { background: #2f1515; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag { background: var(--primary-light); color: var(--primary); padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; }
+@media (max-width: 600px) { .ae-row { flex-direction: column; } .ae-actions { width: 100%; } }

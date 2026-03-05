@@ -1,0 +1,79 @@
+.verify-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg, #f5f3ef);
+  padding: 20px;
+}
+
+.verify-card {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e2ddd6);
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.verify-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  animation: bounce 1.4s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.verify-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text, #1a1a1a);
+  margin-bottom: 14px;
+}
+
+.verify-card p {
+  font-size: 15px;
+  color: var(--text2, #6b6560);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.verify-note {
+  font-size: 13px !important;
+  color: var(--text2, #6b6560);
+  background: var(--surface2, #f0ede8);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 16px 0 24px !important;
+}
+
+.verify-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary, #8b5e3c);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.verify-btn:hover:not(:disabled) { background: var(--primary-hover, #7a5234); }
+.verify-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.verify-logout {
+  background: none;
+  border: none;
+  color: var(--text2, #6b6560);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}

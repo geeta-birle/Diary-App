@@ -1,0 +1,16 @@
+.settings-page { max-width: 560px; }
+.settings-page h2 { font-size: 24px; font-weight: 700; margin-bottom: 28px; }
+.settings-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--shadow); }
+.settings-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 18px; color: var(--text); }
+.settings-field { margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px; }
+.settings-field label { font-size: 13px; font-weight: 600; color: var(--text2); }
+.settings-field input { padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); color: var(--text); font-size: 15px; outline: none; }
+.settings-field input:focus { border-color: var(--primary); }
+.settings-field input:disabled { opacity: 0.6; cursor: not-allowed; }
+.settings-btn { padding: 10px 22px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; margin-top: 6px; }
+.settings-btn:hover { background: var(--primary-hover); }
+.settings-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.settings-btn.danger { background: var(--danger); }
+.settings-btn.danger:hover { background: #c82333; }
+.danger-zone { border-color: #ffcccc; }
+.dark .danger-zone { border-color: #4a2020; }

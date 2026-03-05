@@ -1,0 +1,64 @@
+.mood-analytics { max-width: 800px; }
+.mood-analytics h2 { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+
+.mood-summary-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px;
+}
+.mood-summary-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px 16px; text-align: center; box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.mood-summary-card:hover { transform: translateY(-3px); }
+.ms-icon { font-size: 30px; margin-bottom: 8px; }
+.ms-label { font-size: 12px; color: var(--text2); margin-bottom: 4px; }
+.ms-value { font-size: 18px; font-weight: 700; color: var(--text); }
+
+.chart-section {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px 24px; margin-bottom: 20px; box-shadow: var(--shadow);
+}
+.section-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+/* ── BAR CHART ── */
+.bar-chart { display: flex; flex-direction: column; gap: 10px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-emoji { font-size: 20px; width: 28px; }
+.bar-track { flex: 1; background: var(--surface2); border-radius: 8px; height: 22px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 8px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); min-width: 4px; }
+.bar-count { font-size: 13px; font-weight: 700; color: var(--text); width: 28px; text-align: right; }
+.bar-name  { font-size: 13px; color: var(--text2); width: 80px; }
+
+/* ── TIMELINE ── */
+.timeline-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.timeline-cell {
+  display: flex; flex-direction: column; align-items: center;
+  width: 38px; background: var(--surface2); border-radius: 8px;
+  padding: 6px 4px; cursor: default; transition: transform 0.15s;
+}
+.timeline-cell:hover { transform: scale(1.1); }
+.tl-emoji { font-size: 16px; line-height: 1; }
+.tl-day   { font-size: 10px; color: var(--text2); margin-top: 3px; }
+
+/* ── POSITIVITY ── */
+.positivity-track {
+  background: var(--surface2); border-radius: 12px; height: 18px;
+  overflow: hidden; margin-bottom: 10px;
+}
+.positivity-bar {
+  height: 100%; background: linear-gradient(90deg, #55efc4, #00b894);
+  border-radius: 12px; transition: width 1s ease;
+}
+.positivity-label { font-size: 14px; color: var(--text2); }
+
+/* ── EMPTY ── */
+.empty-state { text-align: center; padding: 60px 20px; }
+.empty-icon  { font-size: 56px; margin-bottom: 16px; }
+.empty-state h3 { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.empty-state p  { color: var(--text2); }
+
+@media (max-width: 600px) {
+  .mood-summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .bar-name { display: none; }
+  .timeline-cell { width: 32px; }
+}
