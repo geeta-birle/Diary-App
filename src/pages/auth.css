@@ -8,22 +8,33 @@
 }
 
 .auth-card {
-  background: var(--surface, #fff);
+  background: var(--surface, #ffffff);
   border: 1px solid var(--border, #e2ddd6);
   border-radius: 20px;
   padding: 48px 40px;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
   animation: fadeUp 0.4s ease;
 }
 
+/* Animation */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.auth-logo { font-size: 48px; text-align: center; margin-bottom: 16px; }
+.auth-logo {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 16px;
+}
 
 .auth-card h1 {
   font-size: 26px;
@@ -40,9 +51,10 @@
   margin-bottom: 28px;
 }
 
+/* Error message */
 .auth-error {
   background: #fff0f0;
-  border: 1px solid #fcc;
+  border: 1px solid #ffcccc;
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 13px;
@@ -50,6 +62,7 @@
   margin-bottom: 16px;
 }
 
+/* Form fields */
 .auth-field {
   display: flex;
   flex-direction: column;
@@ -71,23 +84,26 @@
   background: var(--surface2, #f0ede8);
   color: var(--text, #1a1a1a);
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s ease;
 }
 
-.auth-field input:focus { border-color: var(--primary, #8b5e3c); }
+.auth-field input:focus {
+  border-color: var(--primary, #8b5e3c);
+}
 
+/* Button */
 .auth-btn {
   width: 100%;
   padding: 13px;
   background: var(--primary, #8b5e3c);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 4px;
-  transition: background 0.2s, transform 0.1s;
+  margin-top: 6px;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .auth-btn:hover:not(:disabled) {
@@ -95,8 +111,12 @@
   transform: translateY(-1px);
 }
 
-.auth-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
+/* Switch login/register */
 .auth-switch {
   text-align: center;
   font-size: 14px;
@@ -110,4 +130,6 @@
   text-decoration: none;
 }
 
-.auth-switch a:hover { text-decoration: underline; }
+.auth-switch a:hover {
+  text-decoration: underline;
+}

@@ -2,14 +2,16 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import { ThemeProvider, ThemeSwitcher } from "./ThemeContext";
+import "./themes.css";
 import "./main.css";
+import "./theme-switcher.css";
 
 export const ToastContext  = createContext(null);
 export const SearchContext = createContext("");
 export function useToast()  { return useContext(ToastContext);  }
 export function useSearch() { return useContext(SearchContext); }
 
-/* ── Reusable confirm modal (no window.confirm) ── */
 export function ConfirmModal({ message, onConfirm, onCancel }) {
   return (
     <div className="modal-overlay" onClick={onCancel}>
@@ -24,17 +26,14 @@ export function ConfirmModal({ message, onConfirm, onCancel }) {
   );
 }
 
-export default function Main() {
-  const navigate  = useNavigate();
-  const location  = useLocation();
+function MainInner() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [user,        setUser]        = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [toasts,      setToasts]      = useState([]);
 
-  const [darkMode,     setDarkMode]     = useState(false);
-  const [user,         setUser]         = useState(null);
-  const [sidebarOpen,  setSidebarOpen]  = useState(false);
-  const [searchQuery,  setSearchQuery]  = useState("");
-  const [toasts,       setToasts]       = useState([]);
-
-  /* ── auth guard ── */
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
       if (!u) navigate("/login");
@@ -43,24 +42,12 @@ export default function Main() {
     return () => unsub();
   }, [navigate]);
 
-  /* ── dark mode persistence ── */
-  useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    if (saved === "true") setDarkMode(true);
-  }, []);
-  useEffect(() => {
-    localStorage.setItem("darkMode", darkMode);
-    document.body.className = darkMode ? "dark" : "";
-  }, [darkMode]);
-
-  /* ── toast system ── */
   const addToast = (message, type = "success") => {
     const id = Date.now();
     setToasts((prev) => [...prev, { id, message, type }]);
     setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 3500);
   };
 
-  /* ── logout ── */
   const handleLogout = async () => {
     try { await signOut(auth); navigate("/login"); }
     catch (e) { console.error(e); }
@@ -69,9 +56,7 @@ export default function Main() {
   const isActive = (path) => location.pathname === path ? "active" : "";
 
   if (!user) return (
-    <div className="loading-screen">
-      <div className="spinner" /><span>Loading…</span>
-    </div>
+    <div className="loading-screen"><div className="spinner" /><span>Loading…</span></div>
   );
 
   const navItems = [
@@ -87,18 +72,16 @@ export default function Main() {
   return (
     <ToastContext.Provider value={addToast}>
       <SearchContext.Provider value={searchQuery}>
-        <div className={darkMode ? "app dark" : "app"}>
+        <div className="app">
 
-          {/* ── TOASTS ── */}
           <div className="toast-container">
             {toasts.map((t) => (
               <div key={t.id} className={`toast toast-${t.type}`}>{t.message}</div>
             ))}
           </div>
 
-          {/* ── NAVBAR ── */}
           <header className="navbar">
-            <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Menu">
+            <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
               {sidebarOpen ? "✕" : "☰"}
             </button>
             <div className="logo" onClick={() => navigate("/app/dashboard")}>📓 MyJournal</div>
@@ -106,9 +89,7 @@ export default function Main() {
               type="text" placeholder="Search entries…" className="search"
               value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="dark-toggle" onClick={() => setDarkMode(!darkMode)}>
-              {darkMode ? "☀️" : "🌙"}
-            </button>
+            <ThemeSwitcher />
             <div className="profile">
               <div className="avatar">{(user.displayName || user.email)[0].toUpperCase()}</div>
               <span className="user-name">{user.displayName || user.email.split("@")[0]}</span>
@@ -118,7 +99,6 @@ export default function Main() {
           <div className="layout">
             {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />}
 
-            {/* ── SIDEBAR ── */}
             <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
               <div className="sidebar-profile">
                 <div className="avatar lg">{(user.displayName || user.email)[0].toUpperCase()}</div>
@@ -143,5 +123,13 @@ export default function Main() {
         </div>
       </SearchContext.Provider>
     </ToastContext.Provider>
+  );
+}
+
+export default function Main() {
+  return (
+    <ThemeProvider>
+      <MainInner />
+    </ThemeProvider>
   );
 }

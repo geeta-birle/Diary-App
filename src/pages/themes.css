@@ -1,0 +1,151 @@
+/* ════════════════════════════════════════════════
+   THEMES  —  data-theme is set on <html>
+   Variables cascade into every child automatically
+════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── 1. SOFT PASTEL (also the default / fallback) ── */
+html,
+html[data-theme="soft-pastel"] {
+  --bg:                #fdf6f0;
+  --surface:           #fff9f5;
+  --surface2:          #faeee6;
+  --border:            #f0d9cc;
+  --text:              #3d2b1f;
+  --text2:             #9b7b6e;
+  --primary:           #e07b54;
+  --primary-hover:     #c9663d;
+  --primary-light:     #fdebd8;
+  --danger:            #e57373;
+  --success:           #81c784;
+  --sidebar-w:         240px;
+  --navbar-h:          60px;
+  --radius:            14px;
+  --shadow:            0 2px 12px rgba(224,123,84,0.10);
+  --card-hover-shadow: 0 8px 28px rgba(224,123,84,0.18);
+  --font-body:         'Nunito', sans-serif;
+  --font-heading:      'Playfair Display', Georgia, serif;
+  --font-editor:       'Playfair Display', Georgia, serif;
+  --editor-bg:         #fffaf7;
+}
+
+/* ── 2. DARK JOURNAL ── */
+html[data-theme="dark-journal"] {
+  --bg:                #0f0e0c;
+  --surface:           #1a1816;
+  --surface2:          #242220;
+  --border:            #333028;
+  --text:              #ede8e0;
+  --text2:             #8a8278;
+  --primary:           #c9a96e;
+  --primary-hover:     #dbbe88;
+  --primary-light:     #2a2418;
+  --danger:            #e57373;
+  --success:           #81c784;
+  --sidebar-w:         240px;
+  --navbar-h:          60px;
+  --radius:            10px;
+  --shadow:            0 2px 12px rgba(0,0,0,0.35);
+  --card-hover-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  --font-body:         'Lora', Georgia, serif;
+  --font-heading:      'Lora', Georgia, serif;
+  --font-editor:       'Lora', Georgia, serif;
+  --editor-bg:         #1a1816;
+}
+
+/* ── 3. MINIMAL WHITE ── */
+html[data-theme="minimal-white"] {
+  --bg:                #ffffff;
+  --surface:           #f9f9f9;
+  --surface2:          #f0f0f0;
+  --border:            #e0e0e0;
+  --text:              #111111;
+  --text2:             #666666;
+  --primary:           #111111;
+  --primary-hover:     #333333;
+  --primary-light:     #eeeeee;
+  --danger:            #e53935;
+  --success:           #43a047;
+  --sidebar-w:         240px;
+  --navbar-h:          60px;
+  --radius:            10px;
+  --shadow:            0 1px 4px rgba(0,0,0,0.07);
+  --card-hover-shadow: 0 8px 24px rgba(0,0,0,0.09);
+  --font-body:         'DM Sans', sans-serif;
+  --font-heading:      'DM Serif Display', Georgia, serif;
+  --font-editor:       'DM Serif Display', Georgia, serif;
+  --editor-bg:         #ffffff;
+}
+
+/* ── 4. VINTAGE PAPER ── */
+html[data-theme="vintage-paper"] {
+  --bg:                #f4efe6;
+  --surface:           #faf6ed;
+  --surface2:          #ede7d9;
+  --border:            #d6ccb8;
+  --text:              #2c2416;
+  --text2:             #7a6e5a;
+  --primary:           #8b6914;
+  --primary-hover:     #6d520f;
+  --primary-light:     #f0e6c8;
+  --danger:            #c0392b;
+  --success:           #27ae60;
+  --sidebar-w:         240px;
+  --navbar-h:          60px;
+  --radius:            4px;
+  --shadow:            2px 2px 8px rgba(44,36,22,0.12);
+  --card-hover-shadow: 3px 6px 18px rgba(44,36,22,0.18);
+  --font-body:         'Lora', Georgia, serif;
+  --font-heading:      'Playfair Display', Georgia, serif;
+  --font-editor:       'Lora', Georgia, serif;
+  --editor-bg:         #fdf8ef;
+}
+
+/* ════════════════════════════════════════════════
+   GLOBAL BASE  —  consumes variables
+════════════════════════════════════════════════ */
+body {
+  background-color: var(--bg);
+  color:            var(--text);
+  font-family:      var(--font-body);
+  min-height:       100vh;
+  transition:
+    background-color 0.3s ease,
+    color            0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+/* .app shell must also follow --bg */
+.app {
+  background-color: var(--bg);
+  min-height:       100vh;
+  display:          flex;
+  flex-direction:   column;
+  transition:       background-color 0.3s ease;
+}
+
+/* smooth transitions on every themed surface */
+.navbar, .sidebar, .main-content,
+.stat-card, .entry-card,
+.weekly-mood, .heatmap-section,
+.chart-card, .editor-body,
+.settings-section, .settings-sec,
+.modal-box, .ae-row, .toast {
+  transition:
+    background-color 0.3s ease,
+    border-color     0.3s ease,
+    color            0.3s ease,
+    box-shadow       0.3s ease;
+}
+
+/* ── Vintage paper grain overlay ── */
+html[data-theme="vintage-paper"] body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
